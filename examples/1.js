@@ -1,5 +1,5 @@
 var util = require('util'),
-    xbmc = require('./xbmc');
+    xbmc = require('../xbmc');
 
 //xbmc.on('debug', util.log);
 //xbmc.on('error', util.log);
@@ -12,5 +12,4 @@ xbmc.on('connect', function () {
         console.log(res.result);
         xbmc.disconnect();
     });
-
 });

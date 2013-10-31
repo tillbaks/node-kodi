@@ -86,9 +86,10 @@ function XBMC(options) {
                 // instead of xbmc.send('Player.Stop', params, callback)
                 send('JSONRPC.Introspect', {}, function (res) {
 
-                    var method;
+                    var method, notification;
 
-                    function create_method(method_name, method_data) {
+                    // TODO: Possible to merge method and notification functions?
+                    function create_method(method_name) {
                         var parts = method_name.split("."),
                             namespace = parts[0],
                             method = parts[1];
@@ -102,9 +103,25 @@ function XBMC(options) {
                             send(method_name, params, callback);
                         };
                     }
+                    function create_notification(method_name) {
+                        var parts = method_name.split("."),
+                            namespace = parts[0],
+                            method = parts[1];
+
+                        if (typeof self[namespace] === 'undefined') {
+                            self[namespace] = {};
+                        }
+                        self[namespace][method] = function (callback) {
+                            self.on(method_name, callback);
+                        };
+                    }
 
                     for (method in res.result.methods) {
-                        create_method(method, res.result.methods[method]);
+                        create_method(method);
+                    }
+
+                    for (notification in res.result.notifications) {
+                        create_notification(notification);
                     }
 
                     self.emit("debug", util.format("Connected to %s:%s", config.host, config.port));

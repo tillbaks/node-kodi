@@ -27,11 +27,11 @@ xbmc.on('connect', function () {
 });
 ```
 
-Have not decided how to handle notifications yet so they work like this right now:
+Notifications work the same:
 
 ```javascript
-xbmc.on('Player.OnPlay', function(data) {
-  // we got some data
-  console.log(data);
+xbmc.Player.OnPlay(function(res) {
+  // we got some data in the callback
+  console.log(res);
 });
 ```
