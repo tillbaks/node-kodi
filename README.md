@@ -3,7 +3,7 @@ node-xbmc
 
 simple interface to the xbmc jsonrpc api, still a work in progress but it works [:
 
-didn't want to abstract away the really good xbmc api so all api methods available on the connected xbmc can be called as they are represented on the xbmc api reference
+didn't want to abstract away the really good xbmc api so all api methods available on the connected xbmc can be called as they are represented on the xbmc api reference http://wiki.xbmc.org/index.php?title=JSON-RPC_API
 
 when connecting we send a JSONRPC.Introspect to get all methods then add them to this node API, so any additions to the xbmc api should work without any changes
 
