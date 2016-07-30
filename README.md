@@ -5,9 +5,13 @@ simple interface to the xbmc jsonrpc api, still a work in progress but it works 
 
 xbmc api methods available http://wiki.xbmc.org/index.php?title=JSON-RPC_API
 
+Install:
+npm install git://github.com/tillbaks/node-xbmc.git#master
+
+Use:
 ```javascript
 "use strict";
-var xbmc = require('../xbmc');
+var xbmc = require('xbmc');
 
 // Connect to XBMC
 // The options below are the defaults
