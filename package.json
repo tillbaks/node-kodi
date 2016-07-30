@@ -19,6 +19,7 @@
     "url": "https://github.com/tillbaks/node-xbmc/issues"
   },
   "dependencies": {
-      "async":  "*"
+      "async":  "*",
+      "ws":  "*"
   }
 }
