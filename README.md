@@ -1,12 +1,14 @@
 node-xbmc
 =========
 
-simple interface to the xbmc jsonrpc api, still a work in progress but it works [:
+Simple interface to the XBMC/Kodi JSONRPC API
 
-xbmc api methods available http://wiki.xbmc.org/index.php?title=JSON-RPC_API
+API methods available here: http://kodi.wiki/view/JSON-RPC_API/v6
 
 Install:
+```
 npm install git://github.com/tillbaks/node-xbmc.git#master
+```
 
 Use:
 ```javascript
