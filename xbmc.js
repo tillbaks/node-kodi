@@ -28,7 +28,7 @@ xbmc.setOptions = function (opts) {
   if (opts.port !== undefined) { options.port = opts.port; }
   if (opts.reconnect !== undefined) { options.reconnect = opts.reconnect; }
   if (opts.reconnect_sleep !== undefined) { options.reconnect_sleep = opts.reconnect_sleep; }
-}
+};
 
 xbmc.connect = function (opts) {
 
