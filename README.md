@@ -21,7 +21,7 @@ xbmc.connect({
   host: "localhost",
   port: 9090,
   reconnect: false,
-  reconnect_sleep: 30000
+  reconnect_sleep: 3000
 });
 
 // Lets you know when we are connected
@@ -38,6 +38,14 @@ xbmc.run("VideoLibrary.GetTVShows", {limits: {start: 0, end: 2}}, function (res)
 // Get notified on any notifications you desire
 xbmc.on("Application.OnVolumeChanged", function (data) {
   console.log(data);
+});
+
+// Changes connection options
+xbmc.setOptions({
+  host: "localhost",
+  port: 9090,
+  reconnect: true,
+  reconnect_sleep: 30000
 });
 
 // Closes the connection to XBMC

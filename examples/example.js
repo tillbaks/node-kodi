@@ -13,6 +13,15 @@ xbmc.on('connect', function () {
   console.log("connected to xbmc!");
 });
 
+xbmc.on("close", function () {
+  console.log("disconnected from xbmc");
+});
+
+xbmc.on("error", function (error) {
+  console.log("error from xbmc");
+  console.log(error);
+});
+
 xbmc.run("VideoLibrary.GetTVShows", {limits: {start: 0, end: 2}}, function (res) {
   console.log(res.result);
 });
