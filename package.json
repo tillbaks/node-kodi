@@ -1,7 +1,7 @@
 {
   "name": "xbmc",
-  "version": "0.0.1",
-  "description": "simple xbmc jsonrpc api manager",
+  "version": "1.0.0",
+  "description": "Simple node.js interface to the Kodi JSON-RPC API ",
   "main": "xbmc.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "xbmc",
+    "kodi",
     "jsonrpc"
   ],
   "license": "MIT License",
