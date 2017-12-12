@@ -1,53 +1,65 @@
-node-xbmc
+node-kodi
 =========
 
-Simple interface to the XBMC/Kodi JSONRPC API
+Simple interface to the Kodi JSONRPC API
+A simple API using promises or async/await
+Handles reconnection and timeouts
 
-API methods available here: http://kodi.wiki/view/JSON-RPC_API/v6
+API methods available here: http://kodi.wiki/view/JSON-RPC_API/v8
 
-Install:
+Install (not released on npm yet):
 ```
-npm install git://github.com/tillbaks/node-xbmc.git#master
+npm install git://github.com/tillbaks/node-kodi.git#master
 ```
 
 Use:
 ```javascript
-"use strict";
-var xbmc = require('xbmc');
-
-// Connect to XBMC
 // The options below are the defaults
-xbmc.connect({
-  host: "localhost",
+const kodi = require('kodi')
+
+// Connect to Kodi with spcified options
+kodi.connect({
+  host: "kodi",
   port: 9090,
   reconnect: false,
-  reconnect_sleep: 3000
-});
+  reconnectSleep: 3000,
+  connectionTimeout: 10000,
+  sendTimeout: undefined
+})
 
 // Lets you know when we are connected
-xbmc.on('connect', function () {
-  console.log("connected to xbmc!");
-});
+kodi.on('connect', function () {
+  console.log("connected to kodi!")
+})
 
-// Run any XBMC API command and get the results
-// NOTE: If you are not connected the call will be placed in a queue and executed as the connection is restored.
-xbmc.run("VideoLibrary.GetTVShows", {limits: {start: 0, end: 2}}, function (res) {
-  console.log(res.result);
-});
+// Run any Kodi API command and get the results
+// NOTE: If you are not connected an error will be thrown
+const result = await kodi.send("VideoLibrary.GetTVShows", {limits: {start: 0, end: 2}})
+console.log(result)
 
-// Get notified on any notifications you desire
-xbmc.on("Application.OnVolumeChanged", function (data) {
-  console.log(data);
-});
+// Get notified on specific notifications
+kodi.on("Application.OnVolumeChanged", function (data) {
+  console.log(data)
+})
 
-// Changes connection options
-xbmc.setOptions({
-  host: "localhost",
+// Get notified on any notifications
+kodi.on("notification", function ({ method, params }) {
+  console.log('Notification for method:', method)
+  console.log('Parameters:', params)
+})
+
+// Changes connection options which will be used on next reconnection
+kodi.setOptions({
+  host: 'pi',
   port: 9090,
-  reconnect: true,
-  reconnect_sleep: 30000
-});
+  reconnect: false,
+  reconnectSleep: 3000,
+  connectionTimeout: 10000,
+  sendTimeout: 3000
+})
 
-// Closes the connection to XBMC
-xbmc.close();
+// Closes the connection to Kodi
+kodi.close()
 ```
+
+See tests for more usage examples
