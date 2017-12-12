@@ -1,11 +1,11 @@
 node-kodi
 =========
 
-Simple interface to the Kodi JSONRPC API
-A simple API using promises or async/await
-Handles reconnection and timeouts
+Node.js wrapper for the Kodi JSONRPC API
+- A simple API using promises or async/await
+- Handles reconnection and timeouts
 
-API methods available here: http://kodi.wiki/view/JSON-RPC_API/v8
+All Kodi API methods available here: http://kodi.wiki/view/JSON-RPC_API/v8
 
 Install (not released on npm yet):
 ```
