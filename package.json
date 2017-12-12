@@ -1,7 +1,7 @@
 {
   "name": "kodi",
   "version": "2.0.0",
-  "description": "Simple node.js promise based interface to the Kodi JSON-RPC API",
+  "description": "Node.js wrapper for the Kodi JSONRPC API. A simple API using promises or async/await. Handles reconnection and timeouts.",
   "main": "kodi.js",
   "scripts": {
     "test": "standard && ava",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tillbaks/node-xbmc"
+    "url": "https://github.com/tillbaks/node-kodi"
   },
   "keywords": [
     "kodi",
@@ -19,7 +19,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tillbaks/node-xbmc/issues"
+    "url": "https://github.com/tillbaks/node-kodi/issues"
   },
   "dependencies": {
     "ws": "*"
