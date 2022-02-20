@@ -29,7 +29,13 @@ kodi.close = opts => {
 kodi.connect = opts => {
   kodi.setOptions(opts)
 
-  socket = new WebSocket(`ws://${options.host}:${options.port}/jsonrpc`)
+  const wsOptions = {}
+  if(options.username !== undefined && options.password !== undefined) {
+    if (wsOptions.headers === undefined) wsOptions.headers = {}
+    const encodedString = Buffer.from(`${options.username}:${options.password}`).toString('base64')
+    wsOptions.headers.Authentication = `Basic ${encodedString}`
+  }
+  socket = new WebSocket(`ws://${options.host}:${options.port}/jsonrpc`, wsOptions)
 
   const connectionTimeout = setTimeout(() => {
     kodi.emit('error', new Error('Was not able to connect before reaching timeout.'))
